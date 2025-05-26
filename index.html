@@ -5,19 +5,20 @@
   <title>Virtual Hong Kong Maritime Museum</title>
   <style>
     :root {
-      --papyrus: #fdf6e3;
-      --lapis: #4b6a74;
-      --hematite: #8b5c4a;
-      --sandstone: #d9c9a3;
-      --desert-shadow: rgba(0, 0, 0, 0.06);
-      --ink: #2f2f2f;
-      --gray: #666;
+      --background: #e6f1f9;
+      --primary: #3178c6;
+      --accent: #5b9bd5;
+      --card-bg: #ffffff;
+      --card-border: #cce0f5;
+      --shadow: rgba(0, 0, 0, 0.05);
+      --text: #1f1f1f;
+      --subtext: #555;
     }
 
     body {
       font-family: 'Georgia', serif;
-      background-color: var(--papyrus);
-      color: var(--ink);
+      background-color: var(--background);
+      color: var(--text);
       margin: 0;
       padding: 2rem;
     }
@@ -26,8 +27,8 @@
       text-align: center;
       margin-bottom: 2rem;
       font-size: 2rem;
-      color: var(--lapis);
-      border-bottom: 2px solid var(--sandstone);
+      color: var(--primary);
+      border-bottom: 2px solid var(--accent);
       padding-bottom: 0.5rem;
       letter-spacing: 0.03em;
     }
@@ -39,10 +40,10 @@
     }
 
     .card {
-      background-color: #fcfaf5;
-      border: 1px solid var(--sandstone);
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
       border-radius: 8px;
-      box-shadow: 0 2px 6px var(--desert-shadow);
+      box-shadow: 0 2px 6px var(--shadow);
       overflow: hidden;
       display: flex;
       flex-direction: column;
@@ -57,24 +58,24 @@
       width: 100%;
       height: auto;
       display: block;
-      border-bottom: 1px solid var(--sandstone);
+      border-bottom: 1px solid var(--card-border);
     }
 
     .card-content {
       padding: 1rem;
-      background-color: #fffef9;
+      background-color: #f9fbfe;
     }
 
     .card-title {
       font-size: 1rem;
       font-weight: bold;
       margin-bottom: 0.4rem;
-      color: var(--hematite);
+      color: var(--primary);
     }
 
     .card-description {
       font-size: 0.8rem;
-      color: var(--gray);
+      color: var(--subtext);
       line-height: 1.5;
     }
 
@@ -84,7 +85,7 @@
     }
 
     a:hover .card-title {
-      color: var(--lapis);
+      color: var(--accent);
     }
 
     a:hover {
@@ -107,9 +108,9 @@
         data.forEach(item => {
           objects.push({
             title: item.Name,
-            image: item["Link to Image"],
+            image: item["Link to Image"] || "https://via.placeholder.com/300x200?text=No+Image",
             description: `${item["Short Description"]}<br><strong>Findspot:</strong> ${item.Findsopt}<br><strong>Time Period:</strong> ${item["Time Period"]}`,
-            link: item["Link to Image"]
+            link: item["Link to Image"] || "#"
           });
         });
         renderGallery();
